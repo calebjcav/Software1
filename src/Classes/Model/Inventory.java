@@ -1,13 +1,23 @@
 package Classes.Model;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Inventory {
-    static private ObservableList<Part> allParts;
-    static private ObservableList<Product> allProducts;
+
+    private static int partId = 0;
+
+
+    private static int productId = 0;
+
+    static private ObservableList<Part> allParts = FXCollections.observableArrayList();
+
+    static private ObservableList<Product> allProducts = FXCollections.observableArrayList();
+
+
 //----------------------
 
     static public void addPart(Part newPart){
@@ -114,5 +124,18 @@ public class Inventory {
             return false;
         }
     }
+    public static int getNewPartID() {
+        return ++partId;
+    }
+
+    /**
+     * Generates a new product ID.
+     *
+     * @return A unique product ID.
+     */
+    public static int getNewProductID() {
+        return ++productId;
+    }
+
 }
 
